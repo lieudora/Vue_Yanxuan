@@ -2,7 +2,7 @@
 * 包含N个接口请求函数的模块
 * 函数的返回值
 * */
-
+import ajax from './ajax'
 // 获得首页数据
 export const reqMaison = () => ajax('/maison')
 

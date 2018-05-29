@@ -83,10 +83,10 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <!-- Slides -->
-          <div class="swiper-slide">
-            <a href="javascript:;">
+          <div class="swiper-slide" v-for="(focus, index) in maison.focusList" :key="index">
+            <a href="javascript:;" class="swiper-imgs">
               <div class="swiper-img">
-                <img src="./images/hot.png" alt="">
+                <img :src="focus.picUrl">
               </div>
             </a>
           </div>
@@ -111,6 +111,7 @@
         </ul>
       </div>
     </div>
+
     <!--品牌直供-->
     <div class="fabricant">
       <header class="fabricant_title">
@@ -122,49 +123,13 @@
         </a>
       </header>
       <div class="fabricant_classer">
-        <ul class="fabricant_lists">
-          <li class="fabricant_item left">
+        <ul class="fabricant_lists" >
+          <li class="fabricant_item left" v-for="(tag, index) in maison.tagList" :key="index">
             <a href="javascript:;">
               <div class="manufacturer">
-                <h4 class="manufacturer_title">CK制造商</h4>
+                <h4 class="manufacturer_title">{{tag.name}}</h4>
                 <div class="manufacturer_price">
-                  <span>25</span>
-                  <span>元起</span>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="fabricant_item">
-            <a href="javascript:;">
-              <div class="manufacturer">
-                <h4 class="manufacturer_title">CK制造商</h4>
-                <div class="manufacturer_price">
-                  <span>25</span>
-                  <span>元起</span>
-                </div>
-              </div>
-              <div class="pliocene">
-                <i class="iconfont icon-mojitianqishangxinbiaoqian"></i>
-              </div>
-            </a>
-          </li>
-          <li class="fabricant_item left">
-            <a href="javascript:;">
-              <div class="manufacturer">
-                <h4 class="manufacturer_title">CK制造商</h4>
-                <div class="manufacturer_price">
-                  <span>25</span>
-                  <span>元起</span>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="fabricant_item">
-            <a href="javascript:;">
-              <div class="manufacturer">
-                <h4 class="manufacturer_title">CK制造商</h4>
-                <div class="manufacturer_price">
-                  <span>25</span>
+                  <span>{{tag.floorPrice}}</span>
                   <span>元起</span>
                 </div>
               </div>
@@ -173,6 +138,7 @@
         </ul>
       </div>
     </div>
+
     <!--新品首发-->
     <div class="nouveautes">
       <header class="nouveautes_title">
@@ -189,65 +155,29 @@
       <div class="nouveautes_lists">
         <div class="pic-wrapper">
           <ul class="pic-list">
-            <li class="pic-item">
+            <li class="pic-item" v-for="(newItem, index) in maison.newItemList" :key="index">
               <a href="javascript:;">
-                <img width="120" height="90" src="images/01.png"/>
+                <img width="120" height="90" :src="newItem.listPicUrl"/>
                 <div class="brand_price">
                   <div class="present">
                     <p>满赠</p>
                   </div>
                   <div class="brand">
-                    <span>小龙虾 4-6钱 1千克/盒 （800克虾+200克汤）</span>
+                    <span>{{newItem.name}}</span>
                   </div>
-                  <div class="explosive">夏季爆品，媲美现煮</div>
+                  <div class="explosive">{{newItem.simpleDesc}}</div>
                   <div class="price">
                     <span>¥</span>
-                    <span>98</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="pic-item">
-              <a href="javascript:;">
-                <img width="120" height="90" src="images/01.png"/>
-                <div class="brand_price">
-                  <div class="present">
-                    <p>满赠</p>
-                  </div>
-                  <div class="brand">
-                    <span>小龙虾 4-6钱 1千克/盒 （800克虾+200克汤）</span>
-                  </div>
-                  <div class="explosive">夏季爆品，媲美现煮</div>
-                  <div class="price">
-                    <span>¥</span>
-                    <span>98</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="pic-item">
-              <a href="javascript:;">
-                <img width="120" height="90" src="images/01.png"/>
-                <div class="brand_price">
-                  <div class="present">
-                    <p>满赠</p>
-                  </div>
-                  <div class="brand">
-                    <span>小龙虾 4-6钱 1千克/盒 （800克虾+200克汤）</span>
-                  </div>
-                  <div class="explosive">夏季爆品，媲美现煮</div>
-                  <div class="price">
-                    <span>¥</span>
-                    <span>98</span>
+                    <span>{{newItem.retailPrice}}</span>
                   </div>
                 </div>
               </a>
             </li>
           </ul>
-          <!-- 这里可以放一些其它的 DOM，但不会影响滚动 -->
         </div>
       </div>
     </div>
+
     <!--人气推荐-->
     <div class="recommander">
       <header class="recommander_title">
@@ -264,79 +194,43 @@
       <div class="recommander_lists">
         <div class="pic-wrapper-two">
           <ul class="pic-list">
-            <li class="pic-item">
+            <li class="pic-item"  v-for="(popularItem, index) in maison.popularItemList" :key="index">
               <a href="javascript:;">
-                <img width="120" height="90" src="images/01.png"/>
+                <img width="120" height="90" :src="popularItem.listPicUrl"/>
                 <div class="brand_price">
                   <div class="present">
                     <p>满赠</p>
                   </div>
                   <div class="brand">
-                    <span>小龙虾 4-6钱 1千克/盒 （800克虾+200克汤）</span>
+                    <span>{{popularItem.name}}</span>
                   </div>
-                  <div class="explosive">夏季爆品，媲美现煮</div>
+                  <div class="explosive">{{popularItem.simpleDesc}}</div>
                   <div class="price">
                     <span>¥</span>
-                    <span>98</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="pic-item">
-              <a href="javascript:;">
-                <img width="120" height="90" src="images/01.png"/>
-                <div class="brand_price">
-                  <div class="present">
-                    <p>满赠</p>
-                  </div>
-                  <div class="brand">
-                    <span>小龙虾 4-6钱 1千克/盒 （800克虾+200克汤）</span>
-                  </div>
-                  <div class="explosive">夏季爆品，媲美现煮</div>
-                  <div class="price">
-                    <span>¥</span>
-                    <span>98</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="pic-item">
-              <a href="javascript:;">
-                <img width="120" height="90" src="images/01.png"/>
-                <div class="brand_price">
-                  <div class="present">
-                    <p>满赠</p>
-                  </div>
-                  <div class="brand">
-                    <span>小龙虾 4-6钱 1千克/盒 （800克虾+200克汤）</span>
-                  </div>
-                  <div class="explosive">夏季爆品，媲美现煮</div>
-                  <div class="price">
-                    <span>¥</span>
-                    <span>98</span>
+                    <span>{{popularItem.retailPrice}}</span>
                   </div>
                 </div>
               </a>
             </li>
           </ul>
-          <!-- 这里可以放一些其它的 DOM，但不会影响滚动 -->
         </div>
       </div>
     </div>
+
     <!--严选限时购-->
     <div class="time_limit">
       <div class="time_limit_left">
-        <div class="time_limit">
-          <div class="limit">严选限时购</div>
+        <div class="limit">
+          <div class="limit_text">严选限时购</div>
         </div>
-        <div>
-          <span>01</span>
-          <span>:</span>
-          <span>25</span>
-          <span>:</span>
-          <span>25</span>
+        <div class="time">
+          <span class="hours">00</span>
+          <span class="colon">:</span>
+          <span class="mins">00</span>
+          <span class="colon">:</span>
+          <span class="secs">00</span>
         </div>
-        <div>
+        <div class="rest_time">
           <span>
             <span>下一场 </span>
             <span>22:00</span>
@@ -345,108 +239,146 @@
         </div>
       </div>
       <div class="time_limit_right">
-        <img src="" alt="">
-      </div>
-    </div>
-    <!--福利社-->
-    <div class="welfare">
-      <a href="javascript:;"></a>
-    </div>
-    <!--专题精选-->
-    <div>
-      <header></header>
-      <div>
-        <div>
-          <ul>
-            <li>
-              <a href="javascript:;">
-                <img src="" alt="">
-              </a>
-              <div>
-                <h4>给毛孔来一次深度清洁</h4>
-              </div>
-              <div>
-                <span>
-                  <span>107.1</span>
-                  <span>元起</span>
-                </span>
-                <div>硅胶洁面仪，洗出会发光的素颜肌</div>
-              </div>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <img src="" alt="">
-              </a>
-              <div>
-                <h4>给毛孔来一次深度清洁</h4>
-              </div>
-              <div>
-                <span>
-                  <span>107.1</span>
-                  <span>元起</span>
-                </span>
-                <div>硅胶洁面仪，洗出会发光的素颜肌</div>
-              </div>
-            </li>
-          </ul>
+        <img src="http://yanxuan.nosdn.127.net/ff5af94280c6e588aa3d83304461460b.png?imageView&quality=85&thumbnail=330x330" alt="">
+        <div class="price">
+          <div class="details_price">
+            <div class="unit_price">
+              <span>¥</span>
+              <span>45</span>
+            </div>
+            <div class="unit_price">
+              <span>¥</span>
+              <span>59</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!--居家好物-->
-    <div>
-      <div>
-        <h3>
-          居家好物
-        </h3>
-        <div>
-          <ul>
-            <div>
-              <li>
+
+    <!--福利社-->
+    <div class="welfare">
+      <a href="javascript:;">
+        <img src="http://yanxuan.nosdn.127.net/a3ea2d1108c94c7dece05eddf95f6df5.jpg" alt="">
+      </a>
+    </div>
+
+    <!--专题精选-->
+    <div class="selection">
+        <header class="selection_title">
+          <a href="javascript:;">
+            <div class="selection_text">
+              <p>品牌制造商直供</p>
+              <i class="iconfont icon-you1"></i>
+            </div>
+          </a>
+        </header>
+        <div class="selection_content">
+          <ul class="selection_lists">
+            <div class="selection_list" >
+              <li v-for="(topic, index) in maison.topicList" :key="index">
+                <a href="javascript:;">
+                  <img :src="topic.scenePicUrl" alt="">
+                </a>
+                <div class="selection_bottom">
+                  <h4>{{topic.title}}</h4>
+                  <span>
+                    <span>元起</span>
+                    <span>{{topic.priceInfo}}</span>
+                  </span>
+                </div>
+                <div class="brief">{{topic.subtitle}}</div>
               </li>
             </div>
           </ul>
         </div>
+    </div>
+
+    <!--居家好物-->
+    <div class="home">
+      <header class="home_title">
+        <a href="javascript:;">
+          <div class="home_text">
+            <p>居家好物</p>
+          </div>
+        </a>
+      </header>
+      <div class="home_content">
+        <div class="home">
+          <div class="home_img">
+            <img src="" alt="">
+          </div>
+          <div>
+            宽细夹排，升级爽滑凉感
+          </div>
+        </div>
       </div>
+      <div></div>
+      <div>
+        <span></span>
+        <span></span>
+      </div>
+
     </div>
   </section>
 
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import Swiper from 'swiper'
+  import 'swiper/dist/css/swiper.min.css'
   import BScroll from 'better-scroll'
-  // swiper
-  new Swiper('.swiper-container', {
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination'
-    }
-  })
+
   export default {
     mounted () {
-
-
+       // 触发dispatch获得数据
+      this.$store.dispatch('getMaison')
        // 导航
       let nav = new BScroll ('.nav', {scrollX: true})
-       // 新品首发
-      let wrapper = document.querySelector('.pic-wrapper')
-      let scroll = new BScroll (wrapper, {scrollX: true})
+      // 新品首发
+      let scroll = new BScroll ('.pic-wrapper', {scrollX: true})
       // 人气推荐
       let scrollTwo = new BScroll ('.pic-wrapper-two', {scrollX: true})
+      // 专题精选
+      let scrollSelection = new BScroll ('.selection_lists', {scrollX: true})
+    },
+    computed: {
+      ...mapState(['maison'])
+    },
+    watch: { // maison对象中有数据了, 在异步更新界面之前执行
+      maison (value) {
+        this.$nextTick(() => {
+          // swiper
+          new Swiper('.swiper-container', {
+            autoplay: {
+              delay: 5000,
+            },
+            loop: true,
+            pagination: {
+              el: '.swiper-pagination'
+            }
+          })
+        })
+      }
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .body
-    overflow-x hidden
+  @import "../../common/stylus/mixins.styl"
+  body
+    /*overflow-x hidden*/
   .maison
+    position relative
     width 100%
     height 100%
     background #FFFFFF
     .header_nav // 头部
       width 100%
       height 85px
+      position fixed
+      background #fff
+      z-index 10
       .maison_header
         width 100%
         position relative
@@ -491,23 +423,15 @@
             .text
               font-size 16px
     .swiper // 无缝滑屏
-     width 100%
-     height 263px
-     .swiper-container
+      width 100%
+      height 220px
+      padding 85px 0  45px 0
+    .swiper-container
+      width 100%
+      height 100%
+      img
         width 100%
         height 220px
-        .swiper-wrapper
-          width 2000px
-          height 220px
-            .swiper-slide
-              width 2000px
-              height 220px
-            .swiper-img
-              width 100%
-              height 220px
-              img
-                width 100%
-                height 220px
      .service_policy
        width 100%
        line-height 43px
@@ -552,15 +476,25 @@
             display inline-block
             width 48%
             height 113px
-            background pink
             margin 0 0 5px 1px
             &.left
               margin-left 5px
+            &:nth-child(1)
+              background url('//yanxuan.nosdn.127.net/bcca932aeb9d818dcf6d3a4804f7311b.png')
+              background-size 100%
+            &:nth-child(2)
+              background url('//yanxuan.nosdn.127.net/dd604acce92e61616a0fa2498cf0fd35.png')
+              background-size 100%
+            &:nth-child(3)
+              background url('//yanxuan.nosdn.127.net/f57d460dde6e737f2bacd9f67cb73a41.png')
+              background-size 100%
+            &:nth-child(4)
+              background url('//yanxuan.nosdn.127.net/52aa744559c6fc951e63f98229f36367.png')
+              background-size 100%
           .manufacturer
-            width 150px
+            width 175px
             height 60px
             padding 12px
-            letter-spacing 2px
             box-sizing border-box
             .manufacturer_title
               font-size 13px
@@ -576,6 +510,7 @@
             color #B4A078
             float left
             padding-left 13px
+
     .nouveautes // 新品首发
       width 100%
       height 386px
@@ -612,9 +547,8 @@
       .nouveautes_lists
         width 375px
         height 366px
-        background palegoldenrod
         .pic-wrapper
-          width 375px
+          width 100%
           height 250px
           overflow hidden
           white-space nowrap
@@ -625,14 +559,11 @@
             width 140px
             height 250px
             display inline-block
-            margin 16px 0 16px 16px
+            margin 16px 0 0 16px
             a
-              width 140px
-              height 240px
               img
                 width 140px
                 height 140px
-                background pink
     .recommander //人气推荐
       width 100%
       height 375px
@@ -669,9 +600,8 @@
       .recommander_lists
         width 375px
         height 240px
-        background palegoldenrod
         .pic-wrapper-two
-          width 375px
+          width 100%
           height 250px
           overflow hidden
           white-space nowrap
@@ -682,12 +612,10 @@
             width 140px
             height 250px
             display inline-block
+            margin 16px 0 0 16px
             img
               width 140px
               height 140px
-              background pink
-
-
     .brand_price
       width 120px
       height 85px
@@ -730,4 +658,149 @@
           height 20px
           line-height 20px
           color #b4282d
+    .time_limit // 限时购
+      border-top 9px solid #ededed
+      background #fff
+      width 100%
+      height 215px
+      text-align center
+      display flex
+      flex-direction row
+      .time_limit_left
+        display flex
+        height 184px
+        width 177px
+        flex-direction column
+        justify-content space-between
+        margin-left 5px
+        .limit
+          width 100%
+          height 30px
+          color black
+          margin-top 27px
+          .limit_text
+            width 100%
+            font-size 19px
+            line-height 30px
+            letter-spacing 10px
+            color black
+        .time
+          width 155px
+          height 31px
+          .hours,.mins,.secs
+            width 34px
+            height 31px
+            color white
+            background #444
+            text-align center
+            line-height 31px
+            display inline-block
+            border-radius 2px
+          .colon,.colon
+            display inline-block
+            width 11px
+            height 34px
+            text-align center
+            line-height 34px
+            color black
+        .rest_time
+          width 100%
+          height 40px
+          line-height 40px
+          span
+            height 40px
+            display inline-block
+            font-size 14px
+
+      .time_limit_right
+        width 190px
+        height 190px
+        margin 13px 21px
+        img
+          width 150px
+          height 150px
+        .price
+          width 53px
+          height 53px
+          background-color rgba(244,143,24,.95)
+          border-radius 100%
+          color white
+          text-align center
+          display flex
+          position absolute
+          flex-direction column
+          margin -72px 0 0 116px
+          .details_price
+            width 45px
+            height 45px
+            margin 10px 0 0 2px
+            .unit_price
+              display inline-block
+              span
+                display inline-block
+    .welfare // 福利社
+      width 100%
+      height 165px
+      border-top 9px solid #ededed
+      a
+        width 100%
+        height 100%
+        img
+          width 100%
+          height 100%
+
+    .selection
+      width 100%
+      background white
+      border-top 9.6px solid #EDEDED
+      .selection_title
+        width 100%
+        height 54px
+        .selection_text
+          font-size 16px
+          line-height 54px
+          text-align center
+          color #333
+          p
+            display inline-block
+      .selection_content
+        width 100%
+        height 250px
+        .selection_lists
+          width 100%
+          height 250px
+          .selection_list
+            width 1000px
+            height 230px
+
+            li
+              display inline-block
+              width 287px
+              height 220px
+              margin-left 17px
+              a
+                display inline-block
+                width 287px
+                height 160px
+                img
+                  display inline-block
+                  width 287px
+                  height 160px
+                  background-color pink
+            .selection_bottom
+              width 287px
+              height 23px
+              h4
+                float left
+                font-size 13px
+                width 160px
+                position relative
+              span
+                font-size 13px
+                float right
+                display inline-block
+                color red
+            .brief
+              font-size 13px
+              color #7F7F7F
 </style>
