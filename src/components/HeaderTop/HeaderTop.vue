@@ -1,6 +1,23 @@
 <template>
-  <div>
-
+  <div class="headertop">
+    <div class="header">
+      <div class="left">
+        <a href="jacascript:;">
+          <i class="iconfont icon-shouye"></i>
+        </a>
+      </div>
+      <div class="centre">
+        <a href="jacascript:;">网易严选</a>
+      </div>
+      <div class="right">
+        <span>
+          <i class="iconfont icon-sousuo"></i>
+        </span>
+        <span>
+           <i class="iconfont icon-gouwuche1"></i>
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,5 +26,43 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  .headertop
+    width 100%
+    height 40px
+    display flex
+    text-align center
+    position fixed
+    border-bottom 1px solid #f1f1f1
+    background-color #FAFAFA
+    z-index 10
+    .header
+      line-height 40px
+      position relative
+      width 90%
+      .left
+        float left
+        display inline-block
+        width 20%
+        height 100%
+        font-size 24px
+      .centre
+        float left
+        display inline-block
+        width 59%
+        font-size 18px
+        margin-left 10px
+        a
+          color #444
+      .right
+        float right
+        display inline-block
+        width 18%
+        height 100%
+        span
+          display inline-block
+          &:nth-child(2)
+            margin 0 -24px 0 23px
+    .iconfont
+      font-size 24px
+      color #777
 </style>

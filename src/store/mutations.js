@@ -12,10 +12,10 @@ export default {
   [RECEIVE_MAISON] (state, {maison}) {
     state.maison = maison
   },
-  [RECEIVE_CLASSIFIER] (state, {classifier}) {
-    state.maison = classifier
-  },
   [RECEIVE_CHOSE] (state, {chose}) {
-    state.maison = chose
-  }
+    state.chose = chose
+  },
+  [RECEIVE_CLASSIFIER] (state, {classifier}) {
+    state.classifier = classifier
+  },
 }

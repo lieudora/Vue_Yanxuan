@@ -22,7 +22,17 @@ export default {
       commit(RECEIVE_MAISON, {maison})
     }
   },
+
   // 异步获取识物数据
+  async getChose({commit}) {
+    const result = await reqChose()
+    if(result.code === 0) {
+      const chose = result.data
+      commit(RECEIVE_CHOSE, {chose})
+    }
+  },
+
+  // 异步获取分类数据
   async getClassifier({commit}) {
     const result = await reqClassifier()
     if(result.code === 0) {
@@ -30,12 +40,4 @@ export default {
       commit(RECEIVE_CLASSIFIER, {classifier})
     }
   },
-  // 异步获取分类数据
-  async getChose({commit}) {
-    const result = await reqChose()
-    if(result.code === 0) {
-      const chose = result.data
-      commit(RECEIVE_CHOSE, {chose})
-    }
-  }
 }

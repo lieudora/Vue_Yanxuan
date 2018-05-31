@@ -5,5 +5,5 @@
 export default {
   maison: {},
   chose: {},
-  classifier: {}
+  classifier: {},
 }

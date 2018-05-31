@@ -36,7 +36,7 @@ export default new VueRouter({
 
     {
       path: '/',
-      redirect: '/maison'
+      redirect: '/classifier'
     }
   ]
 })

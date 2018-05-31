@@ -267,7 +267,7 @@
         <header class="selection_title">
           <a href="javascript:;">
             <div class="selection_text">
-              <p>品牌制造商直供</p>
+              <p>专题精选</p>
               <i class="iconfont icon-you1"></i>
             </div>
           </a>
@@ -294,33 +294,51 @@
     </div>
 
     <!--居家好物-->
-    <div class="home">
-      <header class="home_title">
+    <div class="home" v-for="(cate, index) in maison.cateList" :key="index">
+      <header class="home_title" >
+
         <a href="javascript:;">
-          <div class="home_text">
-            <p>居家好物</p>
+          <div class="home_text" >
+            <p>{{cate.name}}好物</p>
           </div>
         </a>
       </header>
-      <div class="home_content">
-        <div class="home">
-          <div class="home_img">
-            <img src="" alt="">
-          </div>
-          <div>
-            宽细夹排，升级爽滑凉感
+      <div class="home_content" >
+        <div class="home_con">
+          <div class="home_lists"  v-for="(item, index) in cate.itemList" :key="index">
+            <div class="home_img" >
+              <img :src="item.listPicUrl" alt="">
+            </div>
+            <div class="home_brief">
+              宽细夹排，升级爽滑凉感
+            </div>
+            <div class="home_name">
+              <span>天然宽篾头层青碳化竹凉席</span>
+            </div>
+            <div class="home_price">
+              <span>¥</span>
+              <span>124</span>
+            </div>
           </div>
         </div>
       </div>
-      <div></div>
-      <div>
-        <span></span>
-        <span></span>
-      </div>
+
 
     </div>
+    <!--footer-->
+    <footer>
+      <div class="foot">
+        <div class="foot_top">
+          <div class="foot_left">下载APP</div>
+          <div class="foot_right">电脑版</div>
+        </div>
+        <div class="foot_bottom">
+          <div class="bottom_top">网易公司版权所有 © 1997-</div>
+          <div class="bottom">食品经营许可证：JY13301080111719</div>
+        </div>
+      </div>
+    </footer>
   </section>
-
 </template>
 
 <script>
@@ -408,16 +426,25 @@
               font-size 13px
       .nav
         width 100%
-        margin-top 20px
+        height 40px
+        display flex
+        overflow hidden
         .list
-          width 800px
-          overflow hidden
-          white-space nowrap
+          display flex
+          justify-content space-between
+          align-items center
+          margin-top 13px
           .tab
             display inline-block
-            padding 0 12px
+            padding 0 7px
             margin-left 8px
             border-bottom 2px solid red
+            .text
+              display inline-block
+              width 50px
+              height 20px
+              justify-content space-between
+              text-align center
             &.action
               border-bottom 2px solid red
             .text
@@ -548,17 +575,18 @@
         width 375px
         height 366px
         .pic-wrapper
+          display flex
           width 100%
           height 250px
           overflow hidden
           white-space nowrap
           .pic-list
-            width 1225px
-            height 250px
+            display flex
+            justify-content space-between
+            align-items center
           .pic-item
             width 140px
             height 250px
-            display inline-block
             margin 16px 0 0 16px
             a
               img
@@ -605,9 +633,11 @@
           height 250px
           overflow hidden
           white-space nowrap
+          display flex
           .pic-list
-            width 1225px
-            height 250px
+            display flex
+            justify-content space-between
+            align-items center
           .pic-item
             width 140px
             height 250px
@@ -749,7 +779,7 @@
           width 100%
           height 100%
 
-    .selection
+    .selection // 专题精选
       width 100%
       background white
       border-top 9.6px solid #EDEDED
@@ -769,10 +799,14 @@
         .selection_lists
           width 100%
           height 250px
+          display flex
+          overflow hidden
           .selection_list
-            width 1000px
+            display flex
+            justify-content space-between
+            align-items center
             height 230px
-
+            border-bottom 9.6px solid #EDEDED
             li
               display inline-block
               width 287px
@@ -799,8 +833,112 @@
                 font-size 13px
                 float right
                 display inline-block
-                color red
+                color #b4282d
             .brief
               font-size 13px
               color #7F7F7F
+    .home // 居家好物
+      position relative
+      width 100%
+      height 100%
+      .home_title
+        width 100%
+        height 54px
+        .home_text
+          font-size 16px
+          line-height 54px
+          text-align center
+          color #333
+          p
+            display inline-block
+      .home_content
+        width 100%
+        height 100%
+        flex-direction row
+        .home_lists
+          display inline-block
+          width 43%
+          height 275px
+          margin 0 10px 0 10px
+        .home_img
+          width 173px
+          height 173px
+          background-color #f4f4f4
+          img
+            width 100%
+            height 100%
+        .home_brief
+          width 173px
+          height 34px
+          background-color #F1ECE2
+          color #9F8A60
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
+          line-height 34px
+          font-size 13px
+          text-align center
+        .home_name
+          width 173px
+          height 25px
+          line-height 25px
+          span
+            display inline-block
+            width 137px
+            overflow hidden
+            white-space nowrap
+            text-overflow ellipsis
+        .home_price
+
+          span
+            display inline-block
+            color #b4282d
+            height 25px
+            line-height 25px
+
+
+    footer // 页底部
+      width 100%
+      height 122px
+      background-color #414141
+      border-top 1px solid rgba(0,0,0,.15)
+      margin-bottom 40px
+      color white
+      font-size 13px
+      border-top
+      .foot_top
+        width 100%
+        height 60px
+        text-align center
+        .foot_left
+          width 80px
+          height 32px
+          border 1px solid #999
+          display inline-block
+          line-height 32px
+          margin 15px
+          border-radius 5px
+        .foot_right
+          width 80px
+          height 32px
+          border 1px solid #999
+          display inline-block
+          line-height 32px
+          border-radius 5px
+          margin 15px
+      .foot_bottom
+        width 80%
+        height 50px
+        margin 0 auto
+        text-align center
+        line-height 40px
+        .bottom_top
+          width 70%
+          margin 0 auto
+          height 20px
+          color #999
+        .bottom
+          height 20px
+          margin 0 auto
+          color #999
 </style>
