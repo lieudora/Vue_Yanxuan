@@ -16,14 +16,14 @@
           <span>短信登录</span>
         </a>
         <a href="javascript:;" class="on" v-show="!loginway">
-          <span>邮箱登录</span>
+          <span>用户名登录</span>
         </a>
       </div>
       <!--验证-->
       <div class="verify">
         <form @submit.prevent="login">
           <!--登陆-->
-          <div class="on showinput" v-show="loginway">
+          <div class="on showinput" v-show="!loginway">
             <div class="verify_login">
               <input type="tel" placeholder="请输入手机号" maxlength="11" v-model="phone">
             </div>
@@ -34,10 +34,10 @@
               <input type="text" placeholder="验证码" maxlength="6" v-model="captcha">
             </div>
           </div>
-          <!--邮箱登陆-->
-          <div class="on showinput" v-show="!loginway" >
+          <!--用户名登录-->
+          <div class="on showinput" v-show="loginway" >
             <div class="verify_login">
-              <input  placeholder="邮箱注册"  v-model="emails">
+              <input placeholder="用户名注册"  v-model="name">
             </div>
             <div class="verify_register">
               <input type="password" placeholder="密码" v-model="pwd">
@@ -73,11 +73,11 @@
   export default {
     data () {
       return {
-       // loginWay: true, // true代表短信登陆, false代表密码
+       // loginway: true, // true代表短信登陆, false代表密码
         phone:'',
         pwd:'',
         captcha:'',
-        emails:'',
+        name:'',
         alertText:'', // 提示文本
         alertShow: false, // 是否显示警告框
       }
@@ -89,10 +89,6 @@
       },
 
     },
-
-    mounted () {
-
-    },
     methods: {
       // 登录验证
       showAlert(alertText) {
@@ -101,7 +97,7 @@
       },
       logins () {
         // 前台验证
-        if(!this.loginWay){
+        if(!this.loginway){
           if(!this.rightPhone){
             MessageBox({
               title: '提示',
@@ -119,18 +115,18 @@
             return
           }
         } else {
-          // 邮箱登录
-          if (!this.emails) {
+          // 用户登录
+          if (!this.name) {
             MessageBox({
               title: '提示',
-              message: '邮箱格式不对！',
+              message: '用户必须指定！',
               showCancelButton: true
             })
             return
           } else if(!this.pwd){
             MessageBox({
               title: '提示',
-              message: '密码必须写！',
+              message: '密码必指定！',
               showCancelButton: true
             })
             return
