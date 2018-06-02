@@ -5,7 +5,6 @@ import Maison from '../pages/Maison/Maison'
 import Chose from '../pages/Chose/Chose'
 import Classifier from '../pages/Classifier/Classifier'
 import Order from '../pages/Order/Order'
-import Profile from '../pages/Profile/Profile'
 import Login from '../pages/Login/Login'
 import Register from '../pages/Register/Register'
 /* eslint-disable no-new */
@@ -39,13 +38,6 @@ export default new VueRouter({
       component: Order,
       meta: {
         showFooter: true
-      }
-    },
-    {
-      path: '/profile',
-      component: Profile,
-      meta: {
-        showFooter: false
       }
     },
     {

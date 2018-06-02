@@ -22,6 +22,7 @@
         </ul>
       </div>
     </div>
+
     <!--无缝滑屏-->
     <div class="swiper">
       <div class="swiper-container">
@@ -270,6 +271,7 @@
 
 
     </div>
+
     <!--footer-->
     <footer>
       <div class="foot">
@@ -781,7 +783,6 @@
                   display inline-block
                   width 287px
                   height 160px
-                  background-color pink
             .selection_bottom
               width 287px
               height 23px
