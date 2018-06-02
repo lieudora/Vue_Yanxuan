@@ -223,7 +223,7 @@
       <div class="look" v-if="chose.yxLook">
         <div class="look_title">严选LOOK</div>
         <a href="#">
-          <img :src="chose.yxLook.picUrl" alt="">
+          <img :src="chose.yxLook.picUrl" alt="pic">
           <div class="look_content">
             <div class="look_con">
               <!--头像，名-->
@@ -237,51 +237,50 @@
 
         </a>
       </div>
-
+      <!--题目-->
+      <div class="more_title">
+        <div>更多精彩</div>
+      </div>
       <!--更多精彩-->
-      <div class="more">
+      <div class="more" v-for="(items, index) in chose.findMore" :key="index">
         <!--三张图-->
-        <div class="more_content">
-          <!--题目-->
-          <div class="more_title">
-            <div>题目</div>
-          </div>
+        <div class="more_content" v-if="items.picList.length !== 0">
           <!--图片-->
           <div class="picture">
             <a href="#">
               <div class="more_img">
                 <div class="img_left">
-                  <img src="" alt="">
+                  <img :src="items.picList[1]" alt="">
                 </div>
                 <div class="more_top">
-                  <img src="" alt="">
+                  <img :src="items.picList[2]"  alt="">
                 </div>
                 <div class="more_bottom">
-                  <img src="" alt="">
+                  <img :src="items.picList[3]"  alt="">
                 </div>
                 <div class="text">
-                  夏天蚊虫细菌滋生，是最需要做好清洁的季节。然而天气这么热，随便一动就出汗，哪有心...
+                  {{items.title}}
                 </div>
               </div>
             </a>
           </div>
         </div>
-
         <!--一张图-->
         <div class="picture_One">
           <a href="#">
             <div class="more_img">
               <div class="img_conter">
-                <img src="" alt="">
+                <img :src="items.scenePicUrl" alt="">
               </div>
               <div class="text">
-                夏天蚊虫细菌滋生，是最需要做好清洁的季节。然而天气这么热，随便一动就出汗，哪有心...
+                {{items.subTitle}}
               </div>
             </div>
           </a>
         </div>
       </div>
     </div>
+    <Gotop/>
   </div>
 </template>
 
@@ -290,10 +289,9 @@
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
   import HeaderTop from '../../components/HeaderTop/HeaderTop'
+  import Gotop from '../../components/Gotop/Gotop'
   export default {
-    components: {
-      HeaderTop,
-    },
+
     mounted () {
       // 获得数据
        this.$store.dispatch('getChose')
@@ -306,6 +304,10 @@
     },
     computed: {
       ...mapState(['chose'])
+    },
+    components: {
+      HeaderTop,
+      Gotop
     }
   }
 </script>
@@ -313,12 +315,12 @@
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins.styl"
   body
-    overflow-x hidden
+    /*overflow-x hidden*/
   .chose
     height 100%
     width 100%
     padding-top 40px
-    margin-bottom 1300px
+    margin-bottom 40px
     .carousel // 轮播
       width 100%
       height 341px
@@ -692,66 +694,16 @@
               width 100%
               height 50px
               line-height normal
-
+    .more_title
+      width 100%
+      height 54px
+      font-size 14px
+      line-height 54px
+      text-align center
+      color #333
     .more // 更多精彩
       width 100%
       height 100%
-      .more_content
-        width 100%
-        height 100%
-        .more_title
-          width 100%
-          height 54px
-          font-size 16px
-          line-height 54px
-          text-align center
-          color #333
-          background palegreen
-        .picture
-          width 90%
-          height 250px
-          margin auto
-          a
-            display block
-            width 100%
-            height 100%
-            border  10px solid #fff
-            box-sizing border-box
-            .more_img
-              position relative
-              width 100%
-              height 180px
-              background red
-              .img_left
-                width 66.6%
-                height 100%
-                background-color pink
-                display inline-block
-              .more_top
-                position absolute
-                width 33.3%
-                height 50%
-                background-color palegreen
-                display block
-                right 0
-                top 0
-              .more_bottom
-                position absolute
-                width 33.3%
-                height 50%
-                background-color antiquewhite
-                right 0
-                bottom 0
-                333
-              .text
-                width 100%
-                height 50px
-                white-space nowrap
-                overflow hidden
-                text-overflow ellipsis
-                line-height 50px
-                color black
-
       .picture_One
         width 90%
         height 250px
@@ -773,6 +725,11 @@
               height 100%
               background-color pink
               display inline-block
+              img
+                display inline-block
+                width 100%
+                height 100%
+                background-size 100%
             .text
               width 100%
               height 50px
@@ -781,5 +738,65 @@
               text-overflow ellipsis
               line-height 50px
               color black
+
+      .more_content
+        width 100%
+        height 100%
+        .picture
+          width 90%
+          height 250px
+          margin auto
+          a
+            display block
+            width 100%
+            height 100%
+            border  10px solid #fff
+            box-sizing border-box
+            .more_img
+              position relative
+              width 100%
+              height 180px
+              .img_left
+                width 66.6%
+                height 100%
+                background-color pink
+                display inline-block
+                img
+                  display inline-block
+                  width 100%
+                  height 100%
+                  background-size 100%
+              .more_top
+                position absolute
+                width 33.3%
+                height 50%
+                display block
+                right 0
+                top 0
+                img
+                  display inline-block
+                  width 100%
+                  height 100%
+                  background-size 100%
+              .more_bottom
+                position absolute
+                width 33.3%
+                height 50%
+                background-color antiquewhite
+                right 0
+                bottom 0
+                img
+                  display inline-block
+                  width 100%
+                  height 100%
+                  background-size 100%
+              .text
+                width 100%
+                height 50px
+                white-space nowrap
+                overflow hidden
+                text-overflow ellipsis
+                line-height 50px
+                color black
 
 </style>

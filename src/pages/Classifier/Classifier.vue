@@ -57,6 +57,7 @@
   .classifier
     width 100%
     height 100%
+    background white
     .classifier_content
       width 100%
       height 100%

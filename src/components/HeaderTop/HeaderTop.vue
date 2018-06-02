@@ -2,19 +2,23 @@
   <div class="headertop">
     <div class="header">
       <div class="left">
-        <a href="jacascript:;">
+        <router-link href="jacascript:;" to="/maison">
           <i class="iconfont icon-shouye"></i>
-        </a>
+        </router-link>
       </div>
       <div class="centre">
         <a href="jacascript:;">网易严选</a>
       </div>
       <div class="right">
         <span>
-          <i class="iconfont icon-sousuo"></i>
+          <router-link to="/maison">
+              <i class="iconfont icon-sousuo"></i>
+          </router-link>
         </span>
         <span>
-           <i class="iconfont icon-gouwuche1"></i>
+          <router-link to="/order">
+            <i class="iconfont icon-gouwuche1"></i>
+          </router-link>
         </span>
       </div>
     </div>
@@ -45,6 +49,9 @@
         width 20%
         height 100%
         font-size 24px
+        .icon-shouye
+          font-size 24px
+          color #777
       .centre
         float left
         display inline-block
@@ -62,7 +69,8 @@
           display inline-block
           &:nth-child(2)
             margin 0 -24px 0 23px
-    .iconfont
-      font-size 24px
-      color #777
+          .icon-sousuo,.icon-gouwuche1
+            font-size 24px
+            color #777
+
 </style>

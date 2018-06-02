@@ -12,68 +12,13 @@
         </div>
       </div>
       <!--导航-->
-      <div class="nav">
+      <div class="nav" >
         <ul class="list">
-          <li class="tab">
+          <li class="tab" v-for="(headList, index) in maison.headCateList" :key="index" @click="getIndex(index)" :class="{active: activeIndex === index}">
             <span class="text">
-              推荐
+              {{headList.name}}
             </span>
           </li>
-          <li  class="tab">
-            <span class="text">
-             居家
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-             配件
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              服装
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              电器
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              洗护
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              饮食
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              推荐
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              餐厨
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              婴童
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              文体
-            </span>
-          </li >
-          <li  class="tab">
-            <span class="text">
-              特色区
-            </span>
-          </li >
         </ul>
       </div>
     </div>
@@ -338,6 +283,7 @@
         </div>
       </div>
     </footer>
+    <Gotop/>
   </section>
 </template>
 
@@ -347,7 +293,13 @@
   import 'swiper/dist/css/swiper.min.css'
   import BScroll from 'better-scroll'
 
+  import Gotop from '../../components/Gotop/Gotop'
   export default {
+    data(){
+      return{
+        activeIndex:0
+      }
+    },
     mounted () {
        // 触发dispatch获得数据
       this.$store.dispatch('getMaison')
@@ -361,7 +313,8 @@
       let scrollSelection = new BScroll ('.selection_lists', {scrollX: true})
     },
     computed: {
-      ...mapState(['maison'])
+      ...mapState(['maison']),
+
     },
     watch: { // maison对象中有数据了, 在异步更新界面之前执行
       maison (value) {
@@ -378,6 +331,14 @@
           })
         })
       }
+    },
+   methods:{
+     getIndex(index) {
+       this.activeIndex = index
+     }
+   },
+    components:{
+      Gotop
     }
   }
 </script>
@@ -438,15 +399,15 @@
             display inline-block
             padding 0 7px
             margin-left 8px
-            border-bottom 2px solid red
             .text
               display inline-block
               width 50px
               height 20px
               justify-content space-between
               text-align center
-            &.action
-              border-bottom 2px solid red
+            &.active
+              border-bottom 2px solid #BE464A
+              color #BE464A
             .text
               font-size 16px
     .swiper // 无缝滑屏

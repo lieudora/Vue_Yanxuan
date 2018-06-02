@@ -5,7 +5,8 @@
 import {
   RECEIVE_MAISON,
   RECEIVE_CLASSIFIER,
-  RECEIVE_CHOSE
+  RECEIVE_CHOSE,
+  LOGINWAY
 }from './mutation-type'
 
 export default {
@@ -18,4 +19,7 @@ export default {
   [RECEIVE_CLASSIFIER] (state, {classifier}) {
     state.classifier = classifier
   },
+  [LOGINWAY] (state, loginway) {
+    state.loginway = loginway
+  }
 }

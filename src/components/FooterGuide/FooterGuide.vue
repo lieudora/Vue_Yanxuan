@@ -24,7 +24,7 @@
       </span>
       <span>购物车</span>
     </a>
-    <a href="javascript:;" class="guide_item" @click="goto('/profile')" :class="{on: '/profile'===$route.path}">
+    <a href="javascript:;" class="guide_item" @click="goto('/login')" :class="{on: '/login'===$route.path}">
       <span class="item_icon">
         <i class="iconfont icon-geren"></i>
       </span>

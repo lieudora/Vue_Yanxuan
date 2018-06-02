@@ -4,7 +4,8 @@
 import {
   RECEIVE_MAISON,
   RECEIVE_CLASSIFIER,
-  RECEIVE_CHOSE
+  RECEIVE_CHOSE,
+  LOGINWAY
 }from './mutation-type'
 
 import {
@@ -40,4 +41,9 @@ export default {
       commit(RECEIVE_CLASSIFIER, {classifier})
     }
   },
+
+  // 获取 loginWay ，loginWay放state中，在Register里面直接取。$router.replace跳转到对用的手机登录和邮箱登录
+  getloginWay({commit},loginway) {
+    commit(LOGINWAY, loginway)
+  }
 }

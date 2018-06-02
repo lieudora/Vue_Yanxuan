@@ -6,4 +6,5 @@ export default {
   maison: {},
   chose: {},
   classifier: {},
+  loginway:null
 }
