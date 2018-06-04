@@ -72,4 +72,5 @@
         margin-bottom 2px
         .iconfont
           font-size 20px
+
 </style>

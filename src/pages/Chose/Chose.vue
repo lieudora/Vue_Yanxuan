@@ -125,7 +125,7 @@
                       <!--头像-->
                       <img  alt="" v-for="(pic, index) in ten.participantAvatar" :key="index" v-if="pic" :src="pic">
                       <div class="talk_perple">
-                        <span>2</span>
+                        <span>{{ten.participantNum}}</span>
                         <span>人参加</span>
                       </div>
                       <!--参与话题-->
@@ -716,14 +716,11 @@
           box-sizing border-box
           .more_img
             position relative
-
             width 100%
             height 180px
-            background red
             .img_conter
               width 100%
               height 100%
-              background-color pink
               display inline-block
               img
                 display inline-block
@@ -738,7 +735,6 @@
               text-overflow ellipsis
               line-height 50px
               color black
-
       .more_content
         width 100%
         height 100%
@@ -759,7 +755,6 @@
               .img_left
                 width 66.6%
                 height 100%
-                background-color pink
                 display inline-block
                 img
                   display inline-block
@@ -782,7 +777,6 @@
                 position absolute
                 width 33.3%
                 height 50%
-                background-color antiquewhite
                 right 0
                 bottom 0
                 img
